@@ -8,15 +8,7 @@ const Home = ({ datas }) => {
   const router = useRouter();
 
   const onClick = (id, title) => {
-    router.push(
-      {
-        pathname: `/movies/${id}`,
-        query: {
-          title,
-        },
-      },
-      `/movies/${id}` // 유저에게 보일 url
-    );
+    router.push(`/movies/${title}/${id}`);
   };
 
   // 변수뒤에 물음표를 넣으면 존재하지(undefined) 않을 때 map 실행되지 않도록 함
@@ -32,13 +24,7 @@ const Home = ({ datas }) => {
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
           <h4>
             <Link
-              href={{
-                pathname: `/movies/${movie.id}`,
-                query: {
-                  title: movie.original_title,
-                },
-              }}
-              as={`/movies/${movie.id}`} // 유저에게 보일 url
+              href={`/movies/${movie.original_title}/${movie.id}`} // 유저에게 보일 url
             >
               <a>{movie.original_title}</a>
             </Link>
