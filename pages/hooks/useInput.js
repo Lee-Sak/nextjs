@@ -6,14 +6,13 @@ const useInput = (initialValue, validator) => {
 
   const onChange = (e) => {
     const targetValue = e.target.value;
-    console.log(targetValue);
+    console.log("input:", targetValue);
     let willUpdate = true;
     if (typeof validator === "function") {
       willUpdate = validator(targetValue);
     }
     if (willUpdate) setValue(targetValue);
   };
-
   return { value, onChange };
 };
 
@@ -41,3 +40,4 @@ const Hooks = () => {
 // return -> name = {value='Mr.a', onChange=onChange}
 // <input placeholder='Name' value='Mr.a', onChange=onChange />
 export default Hooks;
+export { useInput };
